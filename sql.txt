@@ -1,0 +1,28 @@
+<?php 
+$con=mysqli_connect("localhost", "root", "", "hap");
+extract($_POST);
+if(isset($update))
+{
+$sql=mysqli_query($con,"select * from profile where email='0'");
+
+$r=mysqli_num_rows($sql);
+
+if($r==true)
+{
+$err= "<font color='red'>This user already exists</font>";
+}
+else
+{
+$query="insert into profile(fullname,gender,color,height,weight,bodytype,age,dob,mobile,country,state,city,pincode,adress,languageknown,accountfor,profesion,maritalstatus,religion,cast,subcast,gothram,mother,sisters,brothers,income,adhar,education,intrestedin,username,verifedstatus,friends)values( '','$fn','$gender','$color','$height','$weight','$bodytype','$age','$dob','$mobile','$country','$state','$city','$pincode','$adress','$lk','$af','$profesion','$ms','$religion','$cast','$subcast',$gothram','$m',$sis','$bro','$income','$adhar','$edu','$in','',0','0')";
+
+
+mysqli_query($con,$query);
+$err="<font color='blue'>Registration successfull !!</font>";
+	}			
+
+}
+
+
+
+
+?>
